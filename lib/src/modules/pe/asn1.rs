@@ -278,7 +278,7 @@ impl<'a> TryFrom<Any<'a>> for SignedData<'a> {
 ///
 /// [1]: https://datatracker.ietf.org/doc/html/rfc5652#section-5.3
 pub struct SignerInfo<'a> {
-    pub version: i32,
+    pub _version: i32,
     /// Unsigned attributes that contain information about the signer.
     /// These attributes are not protected by the signature, they are usually
     /// added after the signature has been generated. For example, they
@@ -301,7 +301,7 @@ pub struct SignerInfo<'a> {
     pub digest_algorithm: AlgorithmIdentifier<'a>,
     /// The signature algorithm (RSA, DSA, ECDSA) used for producing the
     /// signature.
-    pub signature_algorithm: AlgorithmIdentifier<'a>,
+    pub _signature_algorithm: AlgorithmIdentifier<'a>,
     /// The signature itself. This signature can be validated by using
     /// the public key stored in the certified identified by `serial_number`.
     pub signature: &'a [u8],
@@ -351,7 +351,7 @@ impl<'a> SignerInfo<'a> {
         Ok((
             remainder,
             Self {
-                version: version.as_i32()?,
+                _version: version.as_i32()?,
                 signed_attrs,
                 raw_signed_attrs,
                 unsigned_attrs: unsigned_attrs.unwrap_or_default(),
@@ -359,7 +359,7 @@ impl<'a> SignerInfo<'a> {
                 issuer,
                 serial_number,
                 digest_algorithm,
-                signature_algorithm,
+                _signature_algorithm: signature_algorithm,
             },
         ))
     }

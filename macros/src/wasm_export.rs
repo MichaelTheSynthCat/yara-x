@@ -1,3 +1,8 @@
+// clippy warns that an if let can be simplified in #[darling(default)].
+// This would require upgrade of crate darling to 0.20.10 which is incompatible.
+// https://github.com/TedDriggs/darling/issues/293
+#![allow(clippy::manual_unwrap_or_default)]
+
 extern crate proc_macro;
 
 use darling::FromMeta;

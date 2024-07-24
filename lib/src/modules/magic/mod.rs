@@ -23,11 +23,11 @@ thread_local! {
             .expect("loaded libmagic database")
     };
 
-    static TYPE_CACHE: RefCell<Option<String>> = {
+    static TYPE_CACHE: RefCell<Option<String>> = const {
         RefCell::new(None)
     };
 
-    static MIME_TYPE_CACHE: RefCell<Option<String>> = {
+    static MIME_TYPE_CACHE: RefCell<Option<String>> = const {
         RefCell::new(None)
     };
 
